@@ -18,7 +18,7 @@ Voltcast is an end-to-end energy demand forecasting platform that ingests live e
 ## Architecture
 
 ```
-EIA / Open-Meteo  ─►  Preprocessing  ─►  Model Training (RF / XGB / GRU / LSTM)
+EIA / Open-Meteo  ─►  Preprocessing  ─►  Model Training (RF / XGB / GRU )
                                                 │
                                                 ▼
                                         FastAPI Service
