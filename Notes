@@ -1,0 +1,16 @@
+
+1. Energy Information Administration live API data fetched
+
+2. Meteo (weather details) live API data fetched
+
+3. EIA's data was received by EIA in the (UTC timezone format)
+
+4. Cleaned EIA data and converted them into EST timezone format
+
+5. EIA data was cleaned and converted into (EST) timezone
+- The EIA data covers 2025-09-15 05:00 to 2025-11-06 19:00 (EST).
+
+6. datasets of EIA and Meteo were merged and preprocessed
+
+7. The merged dataset was scaled and checked for missing values and N/A values
+

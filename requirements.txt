@@ -1,0 +1,26 @@
+# CORE UTILITIES
+pandas
+numpy
+requests
+python-dotenv
+joblib
+h5py
+
+# MACHINE LEARNING
+scikit-learn
+xgboost
+
+# DEEP LEARNING
+tensorflow==2.18.0
+
+# API BACKEND
+fastapi
+uvicorn[standard]
+pydantic
+gunicorn
+
+# DASHBOARD
+streamlit
+
+# DEVELOPMENT & TESTING
+pytest

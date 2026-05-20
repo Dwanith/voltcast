@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voltcast – Electricity Demand Forecast</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 10px;
+    }
+    h1 {
+      margin-bottom: 0.2rem;
+    }
+    p {
+      margin-top: 0;
+      color: #555;
+    }
+    .card {
+      border: 1px solid #ddd;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+      background: #fafafa;
+    }
+    .row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .field {
+      flex: 1 1 250px;
+      min-width: 220px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    input, select {
+      width: 100%;
+      padding: 6px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 16px;
+      padding: 10px 18px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 16px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Voltcast – Electricity Demand Forecast</h1>
+  <p>Enter conditions below and get the next-hour PJM demand prediction from your deployed API.</p>
+
+  <div class="card">
+    <h2>Weather Inputs</h2>
+    <div class="row">
+      <div class="field">
+        <label for="temperature_2m">Temperature (°C)</label>
+        <input id="temperature_2m" type="number" value="30">
+      </div>
+
+      <div class="field">
+        <label for="relative_humidity_2m">Relative Humidity (%)</label>
+        <input id="relative_humidity_2m" type="number" value="50">
+      </div>
+
+      <div class="field">
+        <label for="dew_point_2m">Dew Point (°C)</label>
+        <input id="dew_point_2m" type="number" value="15">
+      </div>
+
+      <div class="field">
+        <label for="shortwave_radiation">Shortwave Radiation (W/m²)</label>
+        <input id="shortwave_radiation" type="number" value="200">
+      </div>
+
+      <div class="field">
+        <label for="apparent_temperature">Apparent Temperature (°C)</label>
+        <input id="apparent_temperature" type="number" value="32">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Lagged Demand Inputs</h2>
+    <div class="row">
+      <div class="field">
+        <label for="lag_1h">Lag 1h Demand (MWh)</label>
+        <input id="lag_1h" type="number" value="30000">
+      </div>
+
+      <div class="field">
+        <label for="lag_24h">Lag 24h Demand (MWh)</label>
+        <input id="lag_24h" type="number" value="28000">
+      </div>
+
+      <div class="field">
+        <label for="lag_168h">Lag 168h Demand (MWh)</label>
+        <input id="lag_168h" type="number" value="26000">
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Time Features</h2>
+    <div class="row">
+      <div class="field">
+        <label for="Hour">Hour of Day (0–23)</label>
+        <input id="Hour" type="number" value="14" min="0" max="23">
+      </div>
+
+      <div class="field">
+        <label for="DayOfWeek">Day of Week (0–6, 0=Mon)</label>
+        <input id="DayOfWeek" type="number" value="2" min="0" max="6">
+      </div>
+
+      <div class="field">
+        <label for="DayOfYear">Day of Year (1–366)</label>
+        <input id="DayOfYear" type="number" value="120" min="1" max="366">
+      </div>
+
+      <div class="field">
+        <label for="IsWeekend">Is Weekend (0 = No, 1 = Yes)</label>
+        <input id="IsWeekend" type="number" value="0" min="0" max="1">
+      </div>
+
+      <div class="field">
+        <label for="model_choice">Model</label>
+        <select id="model_choice">
+          <option value="RandomForest">RandomForest</option>
+          <option value="XGBoost">XGBoost</option>
+          <option value="GRU">GRU</option>
+        </select>
+      </div>
+    </div>
+
+    <button onclick="sendPrediction()">Predict Demand</button>
+
+    <div id="result">Prediction will appear here.</div>
+  </div>
+
+  <script src="/dashboard/app.js"></script>
+</body>
+</html>
