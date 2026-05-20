@@ -85,6 +85,6 @@ docker run -p 8000:8000 voltcast
 
 Voltcast is containerized with Docker and runs on AWS EC2. The image bundles the trained models, the FastAPI service, and the dashboard so a single container serves the full stack.
 
-## Licenses
+## License
 
 Proprietary — all rights reserved.
